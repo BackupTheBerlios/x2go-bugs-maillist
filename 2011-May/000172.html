@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [X2go-bugs] [Tickets #68] Re: Only one session is working with	ssh-proxy
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/x2go-bugs/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:x2go-bugs%40lists.berlios.de?Subject=Re%3A%20%5BX2go-bugs%5D%20%5BTickets%20%2368%5D%20Re%3A%20Only%20one%20session%20is%20working%20with%0A%09ssh-proxy&In-Reply-To=%3C20110523230927.Horde.ry5JUIeoSH1N2s0HlIYXsIA%40code.x2go.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000170.html">
+   <LINK REL="Next"  HREF="000173.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[X2go-bugs] [Tickets #68] Re: Only one session is working with	ssh-proxy</H1>
+    <B>bugs at x2go.org</B> 
+    <A HREF="mailto:x2go-bugs%40lists.berlios.de?Subject=Re%3A%20%5BX2go-bugs%5D%20%5BTickets%20%2368%5D%20Re%3A%20Only%20one%20session%20is%20working%20with%0A%09ssh-proxy&In-Reply-To=%3C20110523230927.Horde.ry5JUIeoSH1N2s0HlIYXsIA%40code.x2go.org%3E"
+       TITLE="[X2go-bugs] [Tickets #68] Re: Only one session is working with	ssh-proxy">bugs at x2go.org
+       </A><BR>
+    <I>Mon May 23 23:09:27 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000170.html">[X2go-bugs] [Tickets #68] Only one session is working with ssh-proxy
+</A></li>
+        <LI>Next message: <A HREF="000173.html">[X2go-bugs] [Tickets #68] Re: Only one session is working with	ssh-proxy
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#172">[ date ]</a>
+              <a href="thread.html#172">[ thread ]</a>
+              <a href="subject.html#172">[ subject ]</a>
+              <a href="author.html#172">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ticket URL: <A HREF="http://code.x2go.org/horde4/whups/ticket/?id=68">http://code.x2go.org/horde4/whups/ticket/?id=68</A>
+------------------------------------------------------------------------------
+  Ticket             | 68
+  Updated By         | Mike Gabriel &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/x2go-bugs">mike.gabriel at das-netzwerkteam.de</A>&gt;
+  Summary            | Only one session is working with ssh-proxy
+  Queue              | pyhoca-gui
+  Version            | HEAD
+  Type               | Bug
+-State              | Unconfirmed
++State              | Feedback
+  Priority           | 2. Medium
+  Operating System   | 5
+-Owners             |
++Owners             | Mike Gabriel
+------------------------------------------------------------------------------
+
+
+Mike Gabriel &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/x2go-bugs">mike.gabriel at das-netzwerkteam.de</A>&gt; (2011-05-23 23:09) wrote:
+
+&gt;<i> If one has connected to a host using ssh-proxy, it is not possible  
+</I>&gt;<i> to connect to another host from pyhoca-gui. This is very  
+</I>&gt;<i> inconvenient, as we have many servers where connections should be  
+</I>&gt;<i> possible.
+</I>
+is it possible that you try to bind the SSH proxy tunnels to the same  
+port on localhost? By design of TCP/IP this is not possible. If you  
+use several session profiles in PyHoca-GUI that are configured to use  
+the SSH proxy feature then who have to make sure that they do not try  
+to bind the local tunnel endpoint to the same IP port on localhost.
+
+However, if your PyHoca-GUI wants to use the same IP port for several  
+profiles you will encounter two problems:
+
+(1) in theory: simultaneous sessions will not be possible
+(2) you will receive an SSH host key error before connect
+
+We have to implement a mechanism in PyHoca-GUI that checks this and  
+warns about duplicate port usage on local SSH proxy tunnel endpoints.
+
+If unsure, please attach those parts of your sessions file that  
+describe the sshproxy parameters.
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000170.html">[X2go-bugs] [Tickets #68] Only one session is working with ssh-proxy
+</A></li>
+	<LI>Next message: <A HREF="000173.html">[X2go-bugs] [Tickets #68] Re: Only one session is working with	ssh-proxy
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#172">[ date ]</a>
+              <a href="thread.html#172">[ thread ]</a>
+              <a href="subject.html#172">[ subject ]</a>
+              <a href="author.html#172">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/x2go-bugs">More information about the X2go-Bugs
+mailing list</a><br>
+</body></html>

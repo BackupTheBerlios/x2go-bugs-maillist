@@ -1,0 +1,403 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [X2go-bugs] [Tickets #41] Security setup
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/x2go-bugs/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:x2go-bugs%40lists.berlios.de?Subject=Re%3A%20%5BX2go-bugs%5D%20%5BTickets%20%2341%5D%20Security%20setup&In-Reply-To=%3Cwhups-41-fa95350f2ec5aa2815f253502ea4f42d%40code.x2go.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000071.html">
+   <LINK REL="Next"  HREF="000075.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[X2go-bugs] [Tickets #41] Security setup</H1>
+    <B>bugs at x2go.org</B> 
+    <A HREF="mailto:x2go-bugs%40lists.berlios.de?Subject=Re%3A%20%5BX2go-bugs%5D%20%5BTickets%20%2341%5D%20Security%20setup&In-Reply-To=%3Cwhups-41-fa95350f2ec5aa2815f253502ea4f42d%40code.x2go.org%3E"
+       TITLE="[X2go-bugs] [Tickets #41] Security setup">bugs at x2go.org
+       </A><BR>
+    <I>Tue Feb 22 17:25:39 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000071.html">[X2go-bugs] [Tickets #40] Re: Screen displays behind mainscreen
+</A></li>
+        <LI>Next message: <A HREF="000075.html">[X2go-bugs] [Tickets #41] Re: Security setup
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#73">[ date ]</a>
+              <a href="thread.html#73">[ thread ]</a>
+              <a href="subject.html#73">[ subject ]</a>
+              <a href="author.html#73">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ticket URL: <A HREF="http://code.x2go.org/horde4/whups/ticket/?id=41">http://code.x2go.org/horde4/whups/ticket/?id=41</A>
+------------------------------------------------------------------------------
+  Ticket             | 41
+  Created By         | <A HREF="https://lists.berlios.de/mailman/listinfo/x2go-bugs">dick.kniep at lindix.nl</A>
+  Summary            | Security setup
+  Queue              | pyhoca-gui
+  Version            | HEAD
+  Type               | Enhancement
+  State              | New
+  Priority           | 2. Medium
+  Owners             |
+------------------------------------------------------------------------------
+
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/x2go-bugs">dick.kniep at lindix.nl</A> (2011-02-22 17:25) wrote:
+
+Hi Mike,
+
+Included is a description about the way the server can be configured  
+in such a way that the security is OK. In your config it was still  
+possible for a competent user to add a command to the ssh command.  
+With the included config that possibility is also closed. I would  
+suggest that this
+
+
+lindix -&gt; x2go -&gt; (preliminary) report
+
+   Felix C. Stegerman &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/x2go-bugs">flx at obfusk.net</A>&gt;
+   2011-01-18 16:36
+
+--
+
+=== TODO ===                                                    # {{{1
+
+   * wrapper
+
+   * analysis
+
+   * users, files/dirs, keys, ...
+
+   * ... meta !!!
+
+   * bash/perl code quality
+
+   * bugs
+
+   * ...
+                                                                 # }}}1
+
+--
+
+=== Situation (Example) ===                                     # {{{1
+
+   Provider:           lindix
+   Apps:               cvix, appX, appY
+   Services:           x2goserver [ -&gt; ssh ]
+
+   === Clients, Users &amp; Apps ===                                 # {{{2
+
+     Client            Users                   Apps
+     ------            -----                   ----
+
+     foo               alice, bob              cvix
+     bar               chris, dan              cvix
+     baz               emma, fred, greg        appX
+
+
+     User                                      Apps
+     ----                                      ----
+
+     dan                                       appX
+     fred                                      appY
+                                                                 # }}}2
+
+   === Posix Groups &amp; Users ===                                  # {{{2
+
+     Group             Users
+     -----             -----
+
+     x2gotunnel        foo, bar, baz
+     x2gousers         alice, bob, chris, dan, emma, fred, greg
+
+   ( x2gosftp          alice-sftp, bob-sftp, ...             )
+
+   ( alice-sftp        alice-sftp, alice                     )
+   ( bob-sftp          bob-sfsp, bob                         )
+   ( ...               ...                                   )
+                                                                 # }}}2
+                                                                 # }}}1
+
+=== CAVEATS ===                                                 # {{{1
+
+   * All configuration examples should be double-checked and tested
+     before being used in a production environment.
+
+   * It is not clear to me how the various ports/protocols/services are
+     secured.  It seems to me that:
+
+       * Other users (on the client) can access forwarded (server)
+         ports.
+
+       * Users with server access (e.g. via SSH port forwarding)
+         can access ports used by others.
+
+       * Unless: port/protocol/service access is
+         authenticated/restricted/controlled.
+
+       * Unknown: is the X/nx port/service secured (e.g. with xauth)?
+
+       * Unknown: are the sound/fs/printer/... ports/services secured?
+
+       * A firewall (e.g. shorewall) may be needed to prevent users
+         from accessing ports used by others.
+
+   * The rules in /etc/security/access.conf apply to all PAM
+     configurations using pam_access (with the default configuration
+     file), not just SHH.  It may therefore be necessary to use
+     separate configuration files.  The relevant examples assume that
+     pam_access is used only for SSH (or that the configuration is
+     compatible with all uses of pam_access).  See pam_access(8).
+
+   * ...
+                                                                 # }}}1
+
+=== Server (Changes) ===                                        # {{{1
+
+   === SSH (+ PAM) ===                                           # {{{2
+
+     === Notes ===                                               # {{{3
+
+       * With a little effort, it is possible to run two instances of
+         sshd: one for normal ssh (administrative) access, and one for
+         x2go.  &lt;&lt;See Notes&gt;&gt;                                    # TODO
+                                                                 # }}}3
+
+       ,----[ /etc/ssh/sshd_config ]                             # {{{3
+&gt;&gt;<i>  -&gt;| Port 2222
+</I>       | Protocol 2
+     -&gt;| # ListenAddress ...
+       |
+       | HostKey /etc/ssh/ssh_host_rsa_key
+       | HostKey /etc/ssh/ssh_host_dsa_key
+       |
+       | UsePrivilegeSeparation yes
+       |
+       | KeyRegenerationInterval 3600
+       | ServerKeyBits 768
+       |
+       | SyslogFacility AUTH
+       | LogLevel INFO
+       |
+       | LoginGraceTime 120
+       | PermitRootLogin no
+       | StrictModes yes
+       |
+       | RSAAuthentication no
+       | PubkeyAuthentication yes
+       |
+     -&gt;| # AuthorizedKeysFile %h/.ssh/authorized_keys
+&gt;&gt;<i>  ..| AuthorizedKeysFile /etc/ssh-keys/%u/authorized_keys
+</I>       |
+       | IgnoreRhosts yes
+       | RhostsRSAAuthentication no
+       | HostbasedAuthentication no
+       | IgnoreUserKnownHosts yes
+       |
+       | PermitEmptyPasswords no
+       | ChallengeResponseAuthentication no
+     -&gt;| PasswordAuthentication no
+       |
+&gt;&gt;<i>  -&gt;| AllowGroups wheel x2gotunnel x2gousers x2gosftp
+</I>       |
+     -&gt;| X11Forwarding no
+       | X11DisplayOffset 10
+       | PrintMotd no
+       | PrintLastLog yes
+       | TCPKeepAlive yes
+       |
+       | AcceptEnv LANG LC_*
+       |
+     -&gt;| # Subsystem sftp /usr/lib/openssh/sftp-server
+&gt;&gt;<i>  ..| Subsystem sftp internal-sftp
+</I>       |
+     -&gt;| UsePAM yes
+       |
+     -&gt;| Match Group x2gotunnel
+     ..|   AllowTcpForwarding no
+     ..|   ForceCommand /bin/false
+     ..|   PasswordAuthentication no
+&gt;&gt;<i>  ..|   PermitOpen localhost:2222
+</I>     ..|   X11Forwarding no
+       |
+     -&gt;| Match Group x2gousers
+&gt;&gt;<i>  ..|   # AllowTcpForwarding no
+</I>&gt;&gt;<i>  ..|   ForceCommand /usr/local/bin/x2go-ssh-wrapper
+</I>     ..|   PasswordAuthentication yes
+&gt;&gt;<i>  ..|   # PermitOpen localhost:30001 localhost:30002 ...
+</I>     ..|   X11Forwarding no
+       |
+     -&gt;| Match Group x2gosftp
+     ..|   AllowTcpForwarding no
+&gt;&gt;<i>  ..|   ChrootDirectory /home/__sftp__/%u
+</I>     ..|   ForceCommand internal-sftp
+     ..|   PasswordAuthentication yes
+     ..|   X11Forwarding no
+       `----                                                     # }}}3
+
+       ,----[ /etc/pam.d/sshd ]                                  # {{{3
+       | ...
+       |
+       | # account  required     pam_access.so
+     ++| account    required     pam_access.so
+       |
+       | ...
+       `----                                                     # }}}3
+
+       ,----[ /etc/security/access.conf ]                        # {{{3
+       | ...
+       |
+  &gt;&gt; ++| + : x2gotunnel          : ALL
+     ++| + : x2gousers x2gosftp  : localhost
+       |
+     ++| - : ALL EXCEPT wheel    : ALL
+       `----                                                     # }}}3
+                                                                 # }}}2
+
+   === x2go SSH Wrapper ===                                      # {{{2
+
+     See &lt;../bin/x2go-ssh-wrapper&gt;.
+                                                                 # }}}2
+                                                                 # }}}1
+
+=== Analyses ===                                                # {{{1
+
+   === python-x2go ===                                           # {{{2
+
+     ...
+                                                                 # }}}2
+
+   === x2goserver ===                                            # {{{2
+
+     ,----[ (relevant) files ]                                   # {{{3
+     | INSTALL
+    ?| debian/README.Debian
+    ?| debian/changelog
+    ?| debian/compat
+    ?| debian/control
+    ?| debian/copyright
+    ?| debian/dirs
+    ?| debian/docs
+    ?| debian/init.d
+     | debian/preinst
+    ?| debian/rules
+    ?| sql
+     | x2gocleansessions
+     | x2gocmdexitmessage
+     | x2gocreatebase.sh
+     | x2gogetservers
+     | x2golistsessions
+     | x2golistsessions_root
+     | x2golistsessions_sql
+     | x2gomountdirs
+     | x2gopgwrapper
+     | x2gopgwrapper_local
+     | x2gopgwrapper_net
+     | x2gopgwrapper_sqlite
+     | x2goresume-session
+     | x2goruncommand
+    ?| x2goserver.conf
+     | x2gosessionlimit
+     | x2goshowblocks
+     | x2gosqlite.sh
+     | x2gostartagent
+     | x2gosuspend-agent
+     | x2gosuspend-session
+     | x2goterminate
+     | x2goterminate-session
+     | x2goumount
+     | x2goumount_session
+     `----                                                       # }}}3
+
+     ...
+                                                                 # }}}2
+                                                                 # }}}1
+
+=== Packages ===                                                # {{{1
+
+   === Notes ===                                                 # {{{2
+
+     * Dependencies considered extraneous to this report have been
+       omitted.
+                                                                 # }}}2
+
+   === Server ===                                                # {{{2
+
+     x2goserver [x2go]
+       -&gt;  x2goagent [x2go]
+             -&gt;  nxcompext [x2go]
+                   -&gt;  nxcomp [x2go]
+             -&gt;  nxcompshad [x2go]
+       -&gt;  sudo, openssh-server, openssh-client [!?], sshfs [!?]
+                                                                 # }}}2
+
+   === Client ===                                                # {{{2
+
+     pyhoca-gui [gabriel]
+       -&gt;  python-x2go [gabriel]
+             -&gt;  nxproxy [x2go]
+                   -&gt;  nxcomp [x2go]
+             -&gt;  python (&gt;= 2.6), python-gevent, python-paramiko,
+                 python-cups
+       -&gt;  python-argparse, python-notify, python-setproctitle,
+           python-wxtools
+                                                                 # }}}2
+                                                                 # }}}1
+
+=== Remarks ===                                                 # {{{1
+
+   This report is based on:
+
+     * Information provided by Dick Kniep.
+     * Searching the Internet.
+     * The sshd_config man page (and others).
+
+     * My (preliminary) analysis of:
+
+         Package         Version             Status
+         -------         -------             ------
+
+         python-x2go     0.0.31(-0~nwt1)     TODO
+         x2goclient      3.01(-5)            Done/Sufficient
+         x2goserver      3.0.1(-5)           TODO/Unfinished
+                                                                 # }}}1
+
+--
+
+vim: set ft= tw=70 sw=2 sts=2 et fdm=marker:
+
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000071.html">[X2go-bugs] [Tickets #40] Re: Screen displays behind mainscreen
+</A></li>
+	<LI>Next message: <A HREF="000075.html">[X2go-bugs] [Tickets #41] Re: Security setup
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#73">[ date ]</a>
+              <a href="thread.html#73">[ thread ]</a>
+              <a href="subject.html#73">[ subject ]</a>
+              <a href="author.html#73">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/x2go-bugs">More information about the X2go-Bugs
+mailing list</a><br>
+</body></html>

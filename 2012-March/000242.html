@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [X2go-Bugs] [Tickets #92] x2goclient dialog boxes becomes unreadable in dark system colors schemes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/x2go-bugs/2012-March/index.html" >
+   <LINK REL="made" HREF="mailto:x2go-bugs%40lists.berlios.de?Subject=Re%3A%20%5BX2go-Bugs%5D%20%5BTickets%20%2392%5D%20x2goclient%20dialog%20boxes%20becomes%0A%20unreadable%20in%20dark%20system%20colors%20schemes&In-Reply-To=%3Cwhups-92-fa95350f2ec5aa2815f253502ea4f42d%40code.x2go.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[X2go-Bugs] [Tickets #92] x2goclient dialog boxes becomes unreadable in dark system colors schemes</H1>
+    <B>bugs at x2go.org</B> 
+    <A HREF="mailto:x2go-bugs%40lists.berlios.de?Subject=Re%3A%20%5BX2go-Bugs%5D%20%5BTickets%20%2392%5D%20x2goclient%20dialog%20boxes%20becomes%0A%20unreadable%20in%20dark%20system%20colors%20schemes&In-Reply-To=%3Cwhups-92-fa95350f2ec5aa2815f253502ea4f42d%40code.x2go.org%3E"
+       TITLE="[X2go-Bugs] [Tickets #92] x2goclient dialog boxes becomes unreadable in dark system colors schemes">bugs at x2go.org
+       </A><BR>
+    <I>Fri Mar  2 05:19:21 CET 2012</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#242">[ date ]</a>
+              <a href="thread.html#242">[ thread ]</a>
+              <a href="subject.html#242">[ subject ]</a>
+              <a href="author.html#242">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ticket URL: <A HREF="http://code.x2go.org/horde4/whups/ticket/?id=92">http://code.x2go.org/horde4/whups/ticket/?id=92</A>
+------------------------------------------------------------------------------
+  Ticket             | 92
+  Created By         | <A HREF="https://lists.berlios.de/mailman/listinfo/x2go-bugs">AnX2goUser at mailinator.com</A>
+  Summary            | x2goclient dialog boxes becomes unreadable in dark
+                     | system colors schemes
+  Queue              | x2goclient
+  Version            | HEAD
+  Type               | Bug
+  State              | Unconfirmed
+  Priority           | 1. Low
+  Operating System   | 6
+  Owners             |
++New Attachment     | screenshot.png
+------------------------------------------------------------------------------
+
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/x2go-bugs">AnX2goUser at mailinator.com</A> (2012-03-02 05:19) wrote:
+
+Some people prefer dark colors schemes in their window manager (e.g.  
+light text on dark window border/background). Oftentimes, this is even  
+used as an accessibility feature.
+
+However, x2goclient does not correctly use the &quot;background&quot; color from  
+the system color palette to draw text background, thus resulting in  
+white text on white background (see attachment).
+
+This makes using x2goclient nearly impossible, as oftentimes I don't  
+know what each button says (am I clicking &quot;terminate&quot; or &quot;suspend&quot;? I  
+don't know, because it's unreadable...)
+
+For example, to reproduce the issue in KDE 4.x, do the following:
+Go to: &quot;KDE system settings&quot; -&gt; &quot;Application Appearance&quot; -&gt; &quot;Colors&quot;  
+and select the &quot;Obsidian Coast&quot; setting and hit apply.
+Now start x2goclient (qt version). Any session boxes on the right will  
+have white background, but also have a white-ish text.
+Similarly, when going to connect, the password-dialog and its buttons  
+are unreadible (see attachment).
+
+I think there are two potential solutions:
+1. Let all the text which is on top of hard-coded white background  
+areas, to always use a hard-coded dark color.
+-or-
+2. Use the system color's background instead of the current hardcoded  
+white background to underlay the password/account boxes.
+
+Thanks &amp; Keep up the good work!
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#242">[ date ]</a>
+              <a href="thread.html#242">[ thread ]</a>
+              <a href="subject.html#242">[ subject ]</a>
+              <a href="author.html#242">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/x2go-bugs">More information about the X2go-Bugs
+mailing list</a><br>
+</body></html>

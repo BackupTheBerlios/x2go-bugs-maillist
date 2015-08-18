@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [X2go-bugs] [Tickets #39] Bug in dropbox
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/x2go-bugs/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:x2go-bugs%40lists.berlios.de?Subject=Re%3A%20%5BX2go-bugs%5D%20%5BTickets%20%2339%5D%20Bug%20in%20dropbox&In-Reply-To=%3Cwhups-39-fa95350f2ec5aa2815f253502ea4f42d%40code.x2go.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000062.html">
+   <LINK REL="Next"  HREF="000070.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[X2go-bugs] [Tickets #39] Bug in dropbox</H1>
+    <B>bugs at x2go.org</B> 
+    <A HREF="mailto:x2go-bugs%40lists.berlios.de?Subject=Re%3A%20%5BX2go-bugs%5D%20%5BTickets%20%2339%5D%20Bug%20in%20dropbox&In-Reply-To=%3Cwhups-39-fa95350f2ec5aa2815f253502ea4f42d%40code.x2go.org%3E"
+       TITLE="[X2go-bugs] [Tickets #39] Bug in dropbox">bugs at x2go.org
+       </A><BR>
+    <I>Tue Feb 22 15:33:40 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000062.html">[X2go-bugs] [Tickets #38] Re: Dependency based booting in Squeeze
+</A></li>
+        <LI>Next message: <A HREF="000070.html">[X2go-bugs] [Tickets #39] Re: Bug in dropbox
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#67">[ date ]</a>
+              <a href="thread.html#67">[ thread ]</a>
+              <a href="subject.html#67">[ subject ]</a>
+              <a href="author.html#67">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ticket URL: <A HREF="http://code.x2go.org/horde4/whups/ticket/?id=39">http://code.x2go.org/horde4/whups/ticket/?id=39</A>
+------------------------------------------------------------------------------
+  Ticket             | 39
+  Created By         | <A HREF="https://lists.berlios.de/mailman/listinfo/x2go-bugs">dick.kniep at lindix.nl</A>
+  Summary            | Bug in dropbox
+  Queue              | pyhoca-gui
+  Version            | HEAD
+  Type               | Bug
+  State              | Unconfirmed
+  Priority           | 1. Low
+  Operating System   | 4
+  Owners             |
+------------------------------------------------------------------------------
+
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/x2go-bugs">dick.kniep at lindix.nl</A> (2011-02-22 15:33) wrote:
+
+I have taken a look at the code and it looks like the object is not  
+what you expect, but I do not immediately see what is going wrong
+
+opgwrapper insertmount dick-53-1298383001_stRTERMINAL_dp24  
+&quot;/tmp/dick_media/disk/_home_dick&quot; 127.0.0.1', 'result: INSERT 0 1',  
+'inserted,', 'sshfs  -o  
+IdentityFile=/home/dick/.x2go/ssh/key.z29045,UserKnownHostsFile=/home/dick/.x2go/ssh/key.z29045.ident <A HREF="https://lists.berlios.de/mailman/listinfo/x2go-bugs">dick at 127.0.0.1</A>:&quot;/home/dick&quot; &quot;/tmp/dick_media/disk/_home_dick&quot; -p 30003', 'mount /home/dick ok', 'fname: /home/dick/Desktop/_home_dick(sshfs-disk)',  
+'']
+pyhoca-gui[26132] (x2godropboxqueue-pylib) NOTICE: processing incoming  
+X2go dropbox job: dick_groepen.xls
+Exception in thread Thread-18:
+Traceback (most recent call last):
+   File &quot;/usr/lib/python2.6/threading.py&quot;, line 532, in __bootstrap_inner
+     self.run()
+   File &quot;/usr/lib/python2.6/threading.py&quot;, line 484, in run
+     self.__target(*self.__args, **self.__kwargs)
+   File &quot;/home/dick/x2go/pyhoca-gui/x2go/dropbox.py&quot;, line 214, in  
+x2go_dropboxjob_handler
+     dropbox_action.profile_name = parent_thread.profile_name
+AttributeError: 'unicode' object has no attribute 'profile_name'
+
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000062.html">[X2go-bugs] [Tickets #38] Re: Dependency based booting in Squeeze
+</A></li>
+	<LI>Next message: <A HREF="000070.html">[X2go-bugs] [Tickets #39] Re: Bug in dropbox
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#67">[ date ]</a>
+              <a href="thread.html#67">[ thread ]</a>
+              <a href="subject.html#67">[ subject ]</a>
+              <a href="author.html#67">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/x2go-bugs">More information about the X2go-Bugs
+mailing list</a><br>
+</body></html>

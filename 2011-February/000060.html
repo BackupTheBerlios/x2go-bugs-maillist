@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [X2go-bugs] [Tickets #31] Re: loadbalancing broken; there is only one ssh-connection (with the firstserver)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/x2go-bugs/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:x2go-bugs%40lists.berlios.de?Subject=Re%3A%20%5BX2go-bugs%5D%20%5BTickets%20%2331%5D%20Re%3A%20loadbalancing%20broken%3B%0A%20there%20is%20only%20one%20ssh-connection%20%28with%20the%20firstserver%29&In-Reply-To=%3C20110209165822.Horde.8qHLEYeoSH1NUrmeNIsE2pA%40code.x2go.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000054.html">
+   <LINK REL="Next"  HREF="000051.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[X2go-bugs] [Tickets #31] Re: loadbalancing broken; there is only one ssh-connection (with the firstserver)</H1>
+    <B>bugs at x2go.org</B> 
+    <A HREF="mailto:x2go-bugs%40lists.berlios.de?Subject=Re%3A%20%5BX2go-bugs%5D%20%5BTickets%20%2331%5D%20Re%3A%20loadbalancing%20broken%3B%0A%20there%20is%20only%20one%20ssh-connection%20%28with%20the%20firstserver%29&In-Reply-To=%3C20110209165822.Horde.8qHLEYeoSH1NUrmeNIsE2pA%40code.x2go.org%3E"
+       TITLE="[X2go-bugs] [Tickets #31] Re: loadbalancing broken; there is only one ssh-connection (with the firstserver)">bugs at x2go.org
+       </A><BR>
+    <I>Wed Feb  9 16:58:22 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000054.html">[X2go-bugs] [Tickets #31] Re: loadbalancing broken; there is only one ssh-connection (with the firstserver)
+</A></li>
+        <LI>Next message: <A HREF="000051.html">[X2go-bugs] [Tickets #32] db_getservers doesn't parse output	correctly
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#60">[ date ]</a>
+              <a href="thread.html#60">[ thread ]</a>
+              <a href="subject.html#60">[ subject ]</a>
+              <a href="author.html#60">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ticket URL: <A HREF="http://code.x2go.org/horde4/whups/ticket/?id=31">http://code.x2go.org/horde4/whups/ticket/?id=31</A>
+------------------------------------------------------------------------------
+  Ticket             | 31
+  Updated By         | <A HREF="https://lists.berlios.de/mailman/listinfo/x2go-bugs">schulz at math.uni-goettingen.de</A>
+  Summary            | loadbalancing broken; there is only one ssh-connection
+                     | (with the firstserver)
+  Queue              | x2goclient-qt
+  Version            | 3.0.1.17
+  Type               | Bug
+  State              | Unconfirmed
+  Priority           | 3. High
+  Operating System   | 1
+  Owners             | Oleksandr Shneyder
+------------------------------------------------------------------------------
+
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/x2go-bugs">schulz at math.uni-goettingen.de</A> (2011-02-09 16:58) wrote:
+
+to be more precise: in the function ONMainWindow::slotGetServers there  
+is a for-loop which goes over x2goServers to call &quot;x2golistsessions&quot;  
+but the ssh-connection never changes. It thus repeatedly calls  
+&quot;x2golistsessions&quot; on the firstserver.
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000054.html">[X2go-bugs] [Tickets #31] Re: loadbalancing broken; there is only one ssh-connection (with the firstserver)
+</A></li>
+	<LI>Next message: <A HREF="000051.html">[X2go-bugs] [Tickets #32] db_getservers doesn't parse output	correctly
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#60">[ date ]</a>
+              <a href="thread.html#60">[ thread ]</a>
+              <a href="subject.html#60">[ subject ]</a>
+              <a href="author.html#60">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/x2go-bugs">More information about the X2go-Bugs
+mailing list</a><br>
+</body></html>

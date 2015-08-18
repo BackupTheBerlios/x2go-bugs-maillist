@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [X2go-bugs] [Tickets #60] Re: Restart from desktop
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/x2go-bugs/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:x2go-bugs%40lists.berlios.de?Subject=Re%3A%20%5BX2go-bugs%5D%20%5BTickets%20%2360%5D%20Re%3A%20Restart%20from%20desktop&In-Reply-To=%3C20110311153233.Horde.AKnIJoeoSH1NejKBgxcStxA%40code.x2go.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000152.html">
+   <LINK REL="Next"  HREF="000155.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[X2go-bugs] [Tickets #60] Re: Restart from desktop</H1>
+    <B>bugs at x2go.org</B> 
+    <A HREF="mailto:x2go-bugs%40lists.berlios.de?Subject=Re%3A%20%5BX2go-bugs%5D%20%5BTickets%20%2360%5D%20Re%3A%20Restart%20from%20desktop&In-Reply-To=%3C20110311153233.Horde.AKnIJoeoSH1NejKBgxcStxA%40code.x2go.org%3E"
+       TITLE="[X2go-bugs] [Tickets #60] Re: Restart from desktop">bugs at x2go.org
+       </A><BR>
+    <I>Fri Mar 11 15:32:33 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000152.html">[X2go-bugs] [Tickets #60] Restart from desktop
+</A></li>
+        <LI>Next message: <A HREF="000155.html">[X2go-bugs] [Tickets #60] Re: Restart from desktop
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#153">[ date ]</a>
+              <a href="thread.html#153">[ thread ]</a>
+              <a href="subject.html#153">[ subject ]</a>
+              <a href="author.html#153">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ticket URL: <A HREF="http://code.x2go.org/horde4/whups/ticket/?id=60">http://code.x2go.org/horde4/whups/ticket/?id=60</A>
+------------------------------------------------------------------------------
+  Ticket             | 60
+  Updated By         | Mike Gabriel &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/x2go-bugs">mike.gabriel at das-netzwerkteam.de</A>&gt;
+  Summary            | Restart from desktop
+  Queue              | pyhoca-gui
+  Version            | HEAD
+  Type               | Enhancement
+  State              | Feedback
+  Priority           | 1. Low
+  Operating System   | 4
+  Owners             | Mike Gabriel
+------------------------------------------------------------------------------
+
+
+Mike Gabriel &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/x2go-bugs">mike.gabriel at das-netzwerkteam.de</A>&gt; (2011-03-11 15:32) wrote:
+
+Hi Dick,
+
+as I understand we are talking about running the CVix ,,application''  
+in rootless mode. The is the word ,,application'' relates to a set of  
+rootless X2go session windows that are controlled by PyHoca-GUI.
+
+&gt;<i> After the initial start of pyhoca-gui, the program has started and  
+</I>&gt;<i> shows in the system tray. Most of the users will not see that icon  
+</I>&gt;<i> (and not understand what it stands for). So, after they quit the  
+</I>&gt;<i> application, they will expect the application to restart when they  
+</I>&gt;<i> click the icon on the desktop anew. When I do that, nothing happens,  
+</I>&gt;<i> because pyhoca requires you to click the icon in the system tray. It  
+</I>&gt;<i> is very important that the user can restart the application by  
+</I>&gt;<i> clicking the desktop icon.
+</I>
+There are a few ways to solve this:
+
+1.
+
+   o use PyHoca-CLI instead of PyHoca-GUI (start a single session till  
+it finishes or crashes)
+
+For PyHoca-CLI to be usable again I have to run some tests...  
+PyHoca-GUI shall not only be a proof of concept. It will be maintained  
+as long as Python X2go is maintained by me. However, currently it is  
+slightly broken because of focus on PyHoca-GUI
+
+2.
+   o let a message window pop up if you start a second instance of  
+PyHoca-GUI (which is
+      not allowed). This message notifies the user about the systray icon...
+
+This is simple and I will in short create its own enhancement request  
+in this tracker.
+
+
+3.
+Another possibility would be to close PyHoca-GUI after sessions have  
+been disconnected:
+
+   o by adding a cmdline option to PyHoca-GUI: --exit-on-disconnect
+
+Which approach do you prefer?
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000152.html">[X2go-bugs] [Tickets #60] Restart from desktop
+</A></li>
+	<LI>Next message: <A HREF="000155.html">[X2go-bugs] [Tickets #60] Re: Restart from desktop
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#153">[ date ]</a>
+              <a href="thread.html#153">[ thread ]</a>
+              <a href="subject.html#153">[ subject ]</a>
+              <a href="author.html#153">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/x2go-bugs">More information about the X2go-Bugs
+mailing list</a><br>
+</body></html>

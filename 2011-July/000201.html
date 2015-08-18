@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [X2go-Bugs] [Tickets #74] exception on missing local CUPS server
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/x2go-bugs/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:x2go-bugs%40lists.berlios.de?Subject=Re%3A%20%5BX2go-Bugs%5D%20%5BTickets%20%2374%5D%20exception%20on%20missing%20local%20CUPS%20server&In-Reply-To=%3Cwhups-74-fa95350f2ec5aa2815f253502ea4f42d%40code.x2go.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000217.html">
+   <LINK REL="Next"  HREF="000214.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[X2go-Bugs] [Tickets #74] exception on missing local CUPS server</H1>
+    <B>bugs at x2go.org</B> 
+    <A HREF="mailto:x2go-bugs%40lists.berlios.de?Subject=Re%3A%20%5BX2go-Bugs%5D%20%5BTickets%20%2374%5D%20exception%20on%20missing%20local%20CUPS%20server&In-Reply-To=%3Cwhups-74-fa95350f2ec5aa2815f253502ea4f42d%40code.x2go.org%3E"
+       TITLE="[X2go-Bugs] [Tickets #74] exception on missing local CUPS server">bugs at x2go.org
+       </A><BR>
+    <I>Tue Jul 12 01:26:15 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000217.html">[X2go-Bugs] [Tickets #73] Re: progress_status method for	X2goSession class
+</A></li>
+        <LI>Next message: <A HREF="000214.html">[X2go-Bugs] [Tickets #74] Re: exception on missing local CUPS server
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#201">[ date ]</a>
+              <a href="thread.html#201">[ thread ]</a>
+              <a href="subject.html#201">[ subject ]</a>
+              <a href="author.html#201">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ticket-URL: <A HREF="http://code.x2go.org/horde4/whups/ticket/?id=74">http://code.x2go.org/horde4/whups/ticket/?id=74</A>
+------------------------------------------------------------------------------
+  Ticket           | 74
+  Erstellt Von     | <A HREF="https://lists.berlios.de/mailman/listinfo/x2go-bugs">mike.gabriel at das-netzwerkteam.de</A>
+  Zusammenfassung  | exception on missing local CUPS server
+  Warteschlange    | python-x2go
+  Version          | HEAD
+  Typ              | Bug
+  Status           | Unconfirmed
+  Priorit&#228;t        | 1. Low
+  Operating System | 8
+  Zust&#228;ndige       |
+------------------------------------------------------------------------------
+
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/x2go-bugs">mike.gabriel at das-netzwerkteam.de</A> (2011-07-12 01:26) hat geschrieben:
+
+The below exception occurs if CUPS is not installed on the local client:
+
+Traceback (most recent call last):
+   File &quot;/usr/lib/pymodules/python2.6/pyhoca/wxgui/frontend.py&quot;, line 647, in
+OnP
+rintingPreferences
+     _pp_dialog = printingprefs.PyHocaGUI_PrintingPreferences(self)
+   File &quot;/usr/lib/pymodules/python2.6/pyhoca/wxgui/printingprefs.py&quot;, line
+77, in
+  __init__
+     cups_connection = cups.Connection()
+RuntimeError: failed to connect to server
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000217.html">[X2go-Bugs] [Tickets #73] Re: progress_status method for	X2goSession class
+</A></li>
+	<LI>Next message: <A HREF="000214.html">[X2go-Bugs] [Tickets #74] Re: exception on missing local CUPS server
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#201">[ date ]</a>
+              <a href="thread.html#201">[ thread ]</a>
+              <a href="subject.html#201">[ subject ]</a>
+              <a href="author.html#201">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/x2go-bugs">More information about the X2go-Bugs
+mailing list</a><br>
+</body></html>

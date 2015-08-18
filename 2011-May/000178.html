@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [X2go-bugs] [Tickets #69] Crash if broken suspended/crashed session
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/x2go-bugs/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:x2go-bugs%40lists.berlios.de?Subject=Re%3A%20%5BX2go-bugs%5D%20%5BTickets%20%2369%5D%20Crash%20if%20broken%20suspended/crashed%20session&In-Reply-To=%3Cwhups-69-fa95350f2ec5aa2815f253502ea4f42d%40code.x2go.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000177.html">
+   <LINK REL="Next"  HREF="000179.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[X2go-bugs] [Tickets #69] Crash if broken suspended/crashed session</H1>
+    <B>bugs at x2go.org</B> 
+    <A HREF="mailto:x2go-bugs%40lists.berlios.de?Subject=Re%3A%20%5BX2go-bugs%5D%20%5BTickets%20%2369%5D%20Crash%20if%20broken%20suspended/crashed%20session&In-Reply-To=%3Cwhups-69-fa95350f2ec5aa2815f253502ea4f42d%40code.x2go.org%3E"
+       TITLE="[X2go-bugs] [Tickets #69] Crash if broken suspended/crashed session">bugs at x2go.org
+       </A><BR>
+    <I>Mon May 30 10:25:36 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000177.html">[X2go-bugs] [Tickets #59] Re: PyHoca-GUI , ,	About'' window needs work...
+</A></li>
+        <LI>Next message: <A HREF="000179.html">[X2go-bugs] [Tickets #70] Cannot log on using ssh-proxy
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#178">[ date ]</a>
+              <a href="thread.html#178">[ thread ]</a>
+              <a href="subject.html#178">[ subject ]</a>
+              <a href="author.html#178">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ticket URL: <A HREF="http://code.x2go.org/horde4/whups/ticket/?id=69">http://code.x2go.org/horde4/whups/ticket/?id=69</A>
+------------------------------------------------------------------------------
+  Ticket             | 69
+  Created By         | <A HREF="https://lists.berlios.de/mailman/listinfo/x2go-bugs">dick.kniep at lindix.nl</A>
+  Summary            | Crash if broken suspended/crashed session
+  Queue              | pyhoca-gui
+  Version            | HEAD
+  Type               | Bug
+  State              | Unconfirmed
+  Priority           | 1. Low
+  Operating System   | 5
+  Owners             |
+------------------------------------------------------------------------------
+
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/x2go-bugs">dick.kniep at lindix.nl</A> (2011-05-30 10:25) wrote:
+
+When a session has crashed (or has not been eded properly), it remains  
+in the active sessions list. When one restarts pyhoca-gui (for  
+instance the next day) and tries to reconnect to the crashed session,  
+this traceback occurs
+
+pyhoca-gui[8513] (x2gofwtunnel-pylib) ERROR: incoming request to  
+[localhost]:30004 was rejected by the SSH server.
+pyhoca-gui[8513] (PyHoca-GUI) NOTICE: [lindix - sessie fout]  
+Forwarding tunnel request to [localhost]:30004 for session  
+dick-51-1306402511_stRTERMINAL_dp24 was denied by remote X2go/SSH  
+server. Session startup failed.
+Traceback (most recent call last):
+   File &quot;/usr/lib/pymodules/python2.6/gevent/greenlet.py&quot;, line 405, in run
+     result = self._run(*self.args, **self.kwargs)
+   File &quot;/home/dick/x2go/pyhoca-gui/x2go/client.py&quot;, line 1140, in  
+resume_session
+     return self.session_registry(session_uuid).resume()
+   File &quot;/home/dick/x2go/pyhoca-gui/x2go/session.py&quot;, line 915, in resume
+     _terminal.start_printing()
+   File  
+&quot;/home/dick/x2go/pyhoca-gui/x2go/backends/terminal/_stdout.py&quot;, line  
+485, in start_printing
+     self.share_local_folder(folder_name=spool_dir, folder_type='spool')
+   File  
+&quot;/home/dick/x2go/pyhoca-gui/x2go/backends/terminal/_stdout.py&quot;, line  
+607, in share_local_folder
+     self.control_session._x2go_sftp_write(_x2go_key_fname, _x2go_key_bundle)
+   File &quot;/home/dick/x2go/pyhoca-gui/x2go/backends/control/_stdout.py&quot;,  
+line 161, in _x2go_sftp_write
+     remote_fileobj = self.sftp_client.open(remote_path, 'w')
+   File &quot;/usr/lib/pymodules/python2.6/paramiko/sftp_client.py&quot;, line  
+245, in open
+     t, msg = self._request(CMD_OPEN, filename, imode, attrblock)
+   File &quot;/usr/lib/pymodules/python2.6/paramiko/sftp_client.py&quot;, line  
+628, in _request
+     return self._read_response(num)
+   File &quot;/usr/lib/pymodules/python2.6/paramiko/sftp_client.py&quot;, line  
+675, in _read_response
+     self._convert_status(msg)
+   File &quot;/usr/lib/pymodules/python2.6/paramiko/sftp_client.py&quot;, line  
+701, in _convert_status
+     raise IOError(errno.ENOENT, text)
+IOError: [Errno 2] No such file
+&lt;Greenlet at 0x3ae9408: &lt;bound method PyHocaGUI.resume_session of  
+&lt;pyhoca.wxgui.frontend.PyHocaGUI; proxy of &lt;Swig Object of type  
+'wxPyApp *' at 0x358fba0&gt;  
+ &gt;&gt;(session_name='dick-51-1306402511_stRTERMINAL_dp24')&gt; failed with  
+IOError
+
+pyhoca-gui[8513] (PyHoca-GUI) NOTICE: [lindix - hervatten] X2go Sessie  
+wordt hervat... dick-51-1306402511_stRTERMINAL_
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000177.html">[X2go-bugs] [Tickets #59] Re: PyHoca-GUI , ,	About'' window needs work...
+</A></li>
+	<LI>Next message: <A HREF="000179.html">[X2go-bugs] [Tickets #70] Cannot log on using ssh-proxy
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#178">[ date ]</a>
+              <a href="thread.html#178">[ thread ]</a>
+              <a href="subject.html#178">[ subject ]</a>
+              <a href="author.html#178">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/x2go-bugs">More information about the X2go-Bugs
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [X2go-bugs] [Tickets #64] x2gofeatures query before session start
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/x2go-bugs/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:x2go-bugs%40lists.berlios.de?Subject=Re%3A%20%5BX2go-bugs%5D%20%5BTickets%20%2364%5D%20x2gofeatures%20query%20before%20session%20start&In-Reply-To=%3Cwhups-64-fa95350f2ec5aa2815f253502ea4f42d%40code.x2go.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000164.html">
+   <LINK REL="Next"  HREF="000160.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[X2go-bugs] [Tickets #64] x2gofeatures query before session start</H1>
+    <B>bugs at x2go.org</B> 
+    <A HREF="mailto:x2go-bugs%40lists.berlios.de?Subject=Re%3A%20%5BX2go-bugs%5D%20%5BTickets%20%2364%5D%20x2gofeatures%20query%20before%20session%20start&In-Reply-To=%3Cwhups-64-fa95350f2ec5aa2815f253502ea4f42d%40code.x2go.org%3E"
+       TITLE="[X2go-bugs] [Tickets #64] x2gofeatures query before session start">bugs at x2go.org
+       </A><BR>
+    <I>Sat Mar 19 17:20:05 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000164.html">[X2go-bugs] [Tickets #63] Re: Opening a second session gives error &quot;THIS SHOULD NOT HAPPEN&quot;
+</A></li>
+        <LI>Next message: <A HREF="000160.html">[X2go-bugs] [Tickets #65] Interprocess communication for Pyhoca-GUI
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#159">[ date ]</a>
+              <a href="thread.html#159">[ thread ]</a>
+              <a href="subject.html#159">[ subject ]</a>
+              <a href="author.html#159">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ticket URL: <A HREF="http://code.x2go.org/horde4/whups/ticket/?id=64">http://code.x2go.org/horde4/whups/ticket/?id=64</A>
+------------------------------------------------------------------------------
+  Ticket             | 64
+  Created By         | <A HREF="https://lists.berlios.de/mailman/listinfo/x2go-bugs">mike.gabriel at das-netzwerkteam.de</A>
+  Summary            | x2gofeatures query before session start
+  Queue              | x2goserver
+  Version            | FUTURE
+  Type               | Enhancement
+  State              | New
+  Priority           | 1. Low
+  Operating System   | 6
+  Owners             |
+------------------------------------------------------------------------------
+
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/x2go-bugs">mike.gabriel at das-netzwerkteam.de</A> (2011-03-19 17:20) wrote:
+
+Here is a feature request proposal for the post-Baikal release (Rebun):
+
+The handshake on session start should be extended in the following way:
+
+   o login as user
+   o call a script x2gofeatures (or similar)
+   o this script replies with some file format that states
+      - user may / must not start an X2go session
+      - user may / must not start in rootless/desktop mode
+      - available commands to execute (KDE, TERMINAL, /usr/bin/xterm...)
+      - user may / must not print
+      - user may / must not use audio
+      - ...
+    o the client should obey to this returned list of features
+    o if the user tries to hack some feature that he/she is not allowed to
+      use, the server of course also has to deny this feature (and maybe even
+      the whole session)
+
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000164.html">[X2go-bugs] [Tickets #63] Re: Opening a second session gives error &quot;THIS SHOULD NOT HAPPEN&quot;
+</A></li>
+	<LI>Next message: <A HREF="000160.html">[X2go-bugs] [Tickets #65] Interprocess communication for Pyhoca-GUI
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#159">[ date ]</a>
+              <a href="thread.html#159">[ thread ]</a>
+              <a href="subject.html#159">[ subject ]</a>
+              <a href="author.html#159">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/x2go-bugs">More information about the X2go-Bugs
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [X2go-Bugs] [Tickets #93] x2goserver 20120713~573~build1 broken on wheezy, Sessions limit reached
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/x2go-bugs/2012-July/index.html" >
+   <LINK REL="made" HREF="mailto:x2go-bugs%40lists.berlios.de?Subject=Re%3A%20%5BX2go-Bugs%5D%20%5BTickets%20%2393%5D%20x2goserver%2020120713%7E573%7Ebuild1%20broken%20on%0A%20wheezy%2C%20Sessions%20limit%20reached&In-Reply-To=%3Cwhups-93-fa95350f2ec5aa2815f253502ea4f42d%40code.x2go.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000244.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[X2go-Bugs] [Tickets #93] x2goserver 20120713~573~build1 broken on wheezy, Sessions limit reached</H1>
+    <B>bugs at x2go.org</B> 
+    <A HREF="mailto:x2go-bugs%40lists.berlios.de?Subject=Re%3A%20%5BX2go-Bugs%5D%20%5BTickets%20%2393%5D%20x2goserver%2020120713%7E573%7Ebuild1%20broken%20on%0A%20wheezy%2C%20Sessions%20limit%20reached&In-Reply-To=%3Cwhups-93-fa95350f2ec5aa2815f253502ea4f42d%40code.x2go.org%3E"
+       TITLE="[X2go-Bugs] [Tickets #93] x2goserver 20120713~573~build1 broken on wheezy, Sessions limit reached">bugs at x2go.org
+       </A><BR>
+    <I>Tue Jul 17 19:42:02 CEST 2012</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000244.html">[X2go-Bugs] [Tickets #93] Re: x2goserver 20120713~573~build1 broken on wheezy, Sessions limit reached
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#243">[ date ]</a>
+              <a href="thread.html#243">[ thread ]</a>
+              <a href="subject.html#243">[ subject ]</a>
+              <a href="author.html#243">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ticket-URL: <A HREF="http://code.x2go.org/horde4/whups/ticket/?id=93">http://code.x2go.org/horde4/whups/ticket/?id=93</A>
+------------------------------------------------------------------------------
+  Ticket           | 93
+  Erstellt Von     | <A HREF="https://lists.berlios.de/mailman/listinfo/x2go-bugs">gschnabel at gmx.de</A>
+  Zusammenfassung  | x2goserver 20120713~573~build1 broken on wheezy, Sessions
+                   | limit reached
+  Warteschlange    | x2goserver
+  Version          | HEAD
+  Typ              | Bug
+  Status           | Unconfirmed
+  Priorit&#228;t        | 3. High
+  Operating System | 9
+  Zust&#228;ndige       |
++Neue Anlage      | sessions_limit_reached.png
+------------------------------------------------------------------------------
+
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/x2go-bugs">gschnabel at gmx.de</A> (2012-07-17 19:42) hat geschrieben:
+
+System:
+Debian Testing/wheezy with
+* x2goserver_3.1.1.4-0~x2go1+wheezy~heuler~20120713~573~build1
+* x2goserver-extensions_3.1.1.4-0~x2go1+wheezy~heuler~20120713~573~build1
+
+
+Problem:
+Connections from a Windows XP system to the Debian system with  
+X2GoClient V. 3.99.2.2 (Qt - 4.8.1)
+<A HREF="http://code.x2go.org/releases/binary-win32/x2goclient/x2goclient-3.99.2.1-setup.exe">http://code.x2go.org/releases/binary-win32/x2goclient/x2goclient-3.99.2.1-setup.exe</A>
+are not possible, error popup: &quot;Sessions limit reached:&quot;. See attached  
+screenshot
+
+
+Workaround:
+Downgrade to
+* x2goserver_3.1.1.3-0~x2go1+wheezy~heuler~20120629~567~build1
+* x2goserver-extensions_3.1.1.3-0~x2go1+wheezy~heuler~20120629~567~build1
+
+Connections with the older packages work with no problems.
+
+Bug is introduced with commit  
+<A HREF="http://code.x2go.org/gitweb?p=x2goserver.git;a=commit;h=d70b136ab99623678f34c12f2175570a856eaa77">http://code.x2go.org/gitweb?p=x2goserver.git;a=commit;h=d70b136ab99623678f34c12f2175570a856eaa77</A>
+
+Reversal of changes on /usr/bin/x2gosessionlimit make connections work again.
+
+
+
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000244.html">[X2go-Bugs] [Tickets #93] Re: x2goserver 20120713~573~build1 broken on wheezy, Sessions limit reached
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#243">[ date ]</a>
+              <a href="thread.html#243">[ thread ]</a>
+              <a href="subject.html#243">[ subject ]</a>
+              <a href="author.html#243">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/x2go-bugs">More information about the X2go-Bugs
+mailing list</a><br>
+</body></html>
